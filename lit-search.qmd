@@ -1,0 +1,79 @@
+---
+title: "Review of methods for the analysis of censored serological data"
+author: "Zane Billings"
+date: last-modified
+date-format: iso
+bibliography: "lit-search.bib"
+csl: "aje.csl"
+---
+
+# Literature search procedure
+
+* I started with a review of citations from Jon's manuscript [@xu2015;
+@zelner2019; @lindsey1998] and Yang's draft [@hewett2007; @zhegnoun2008;
+@bergstrand2009; @cauchemez2012; @authority2010; @tran2021; @el-shaarawi1992;
+@little2020].
+* Next, I pulled all of the citations from the Handelgroup Zotero collection
+called `censored-missing-data` and cross-referenced that with the collection
+called `2023-10 software grant` [@chen2013; @xu2015; @irby2021; @svahn2022;
+@groth2017; @zelner2019; @sun2022; @jaber2021; @yang2010; @arunajadai2012;
+@bergstrand2009; @keizer2015; @cauchemez2012; @tran2021; @lindsey1998;
+@groth2018; @breen1996; @matsouaka2020; @bernhardt2015; @helsel2012;
+@gomez2009; @jusko2012; @hecht2018; @beal2001].
+* Next, I did a search on Web of Science for all papers with `censored data` as
+a topic that were categorized as reviews. I saved any that seemed potentially
+relevant [@bou-hamad2011; @yu2013; @chen2009; @becker2001; @guo2014;
+@onofri2019; @boukeloua2016; @leung1997; @wang2022; @fievet2010; @yao2022;
+@nieuwenhuijsen1997; @turkson2021; @mihalache2023; @emura2022; @horton1999;
+@goldkuhle2023; @darrigo2021; @wu2018; @winship1992; @rabe-hesketh2001;
+@cramer2023; @shih2002; @sinha1997; @agarwal2012; @joffe2005; @gomez1992a;
+@lee1997; @troxel2002; @manteiga1994; @shoari2018; @christofaro2014;
+@cohen1991].
+* Next I did a search for `"antibody" (any field) AND ("censor") (any field)`,
+which had about 700 results. So I reviewed the titles and abstracts and saved
+any relevant articles [@saulo2021; @martinez-florez2021; @gilbert2023;
+@moulton1996; @moulton1995; @xu2015; @liu2013; @aragon1993; @lee2018;
+@gilbert2019; @lapidus2011; @martinez-florez2013; @dagne2013;
+@martinez-florez2018; @campbell2019; @tang2018; @martinez-florez2015;
+@bonner2021; @law1992; @nauta2006; @sweeting2010; @gomez1992; @xu2015c;
+@bergstrand2009; @delabre2017; @zhao2018; @wilber2020; @cauchemez2012;
+@zhang2013; @teunis2002; @stepanek2023; @tran2021; @cavalcante2018;
+@mahiane2014; @kafatos2005; @mossong2000; @goeyvaerts2015; @donovan2019;
+@jewell1994; @desousa2018; @cheuvart2013; @seaman2001; @cheung2019; @zeng2010;
+@coudeville2010; @xu2016; @huang2009; @dowd2009; @tan1992; @yu2012; @nhat2017;
+@martinez-florez2021a; @lumley2021; @strzalkowska-kominiak2010; @li2008].
+* I think a more comprehensive search string would be
+`“(TS=(nondetect*) or TS=(non-detect*) or TS=(censor*)) AND (TS=(antibody) or TS=(immun*)) NOT (TS=(survival))”`
+but when I went to do that, I got like a thousand more results and didn't want to
+look through all of them. So if we decide to independently do a review I'll
+go back to that.
+* By searching the keyword "non-detects", I also found some additional papers,
+and there were a handful from miscellaneous other places as well. [@xu2015;
+@white2023; @mcgrory2020; @gelman2004; @kato2013; @zhang2004; @bolognese1994;
+@bergstrand2009; @baccarelli2005; @cauchemez2012; @authority2010; @tran2021;
+@helsel2010; @sherina2020; @cohen1963; @eilers2012; @StanManual;
+@wijeysundera2012].
+* As you can see, these were not all unique entries, but since this isn't a
+formal systematic review I automatically deduplicated in Zotero and didn't
+count anything. But according to the Quarto doc there were 126 unique citations
+at this point.
+
+# TODO
+
+* The next thing to do is skim through each paper, and determine which
+are worth reading in-depth, which I did in a google sheet that can be found
+at this link: [LINK](LINK).
+* We found # papers which were relevant [CITE THEM].
+* We identified a few papers as being of key importance [CITE THEM], so we
+looked through the citations to find other relevant papers we had missed. We
+found SOME papers through citations [CITE THEM].
+We then skimmed and summarized those papers to find the relevant ones. [CITE
+THEM].
+* Finally, we imported the zotero collection into ResearchRabbit to
+find additional relevant papers using AI. We identified SOME additional
+references which we skimmed and summarized [CITE THEM], including SOME very
+relevant papers [CITE THEM].
+* After finding papers, we took the collection of the most relevant papers,
+as detailed, and synthesized the results.
+
+<!-- END OF FILE -->

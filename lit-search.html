@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Zane Billings">
+<meta name="dcterms.date" content="2023-11-06">
+
+<title>Review of methods for the analysis of censored serological data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="lit-search_files/libs/clipboard/clipboard.min.js"></script>
+<script src="lit-search_files/libs/quarto-html/quarto.js"></script>
+<script src="lit-search_files/libs/quarto-html/popper.min.js"></script>
+<script src="lit-search_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="lit-search_files/libs/quarto-html/anchor.min.js"></script>
+<link href="lit-search_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="lit-search_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="lit-search_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="lit-search_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="lit-search_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Review of methods for the analysis of censored serological data</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Zane Billings </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2023-11-06</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="literature-search-procedure" class="level1">
+<h1>Literature search procedure</h1>
+<ul>
+<li>I started with a review of citations from Jon’s manuscript <span class="citation" data-cites="xu2015 zelner2019 lindsey1998">(<a href="#ref-xu2015" role="doc-biblioref">1</a>–<a href="#ref-lindsey1998" role="doc-biblioref">3</a>)</span> and Yang’s draft <span class="citation" data-cites="hewett2007 zhegnoun2008 bergstrand2009 cauchemez2012 authority2010 tran2021 el-shaarawi1992 little2020">(<a href="#ref-hewett2007" role="doc-biblioref">4</a>–<a href="#ref-little2020" role="doc-biblioref">11</a>)</span>.</li>
+<li>Next, I pulled all of the citations from the Handelgroup Zotero collection called <code>censored-missing-data</code> and cross-referenced that with the collection called <code>2023-10 software grant</code> <span class="citation" data-cites="chen2013 xu2015 irby2021 svahn2022 groth2017 zelner2019 sun2022 jaber2021 yang2010 arunajadai2012 bergstrand2009 keizer2015 cauchemez2012 tran2021 lindsey1998 groth2018 breen1996 matsouaka2020 bernhardt2015 helsel2012 gomez2009 jusko2012 hecht2018 beal2001">(<a href="#ref-xu2015" role="doc-biblioref">1</a>–<a href="#ref-lindsey1998" role="doc-biblioref">3</a>,<a href="#ref-bergstrand2009" role="doc-biblioref">6</a>,<a href="#ref-cauchemez2012" role="doc-biblioref">7</a>,<a href="#ref-tran2021" role="doc-biblioref">9</a>,<a href="#ref-chen2013" role="doc-biblioref">12</a>–<a href="#ref-beal2001" role="doc-biblioref">29</a>)</span>.</li>
+<li>Next, I did a search on Web of Science for all papers with <code>censored data</code> as a topic that were categorized as reviews. I saved any that seemed potentially relevant <span class="citation" data-cites="bou-hamad2011 yu2013 chen2009 becker2001 guo2014 onofri2019 boukeloua2016 leung1997 wang2022 fievet2010 yao2022 nieuwenhuijsen1997 turkson2021 mihalache2023 emura2022 horton1999 goldkuhle2023 darrigo2021 wu2018 winship1992 rabe-hesketh2001 cramer2023 shih2002 sinha1997 agarwal2012 joffe2005 gomez1992a lee1997 troxel2002 manteiga1994 shoari2018 christofaro2014 cohen1991">(<a href="#ref-bou-hamad2011" role="doc-biblioref">30</a>–<a href="#ref-cohen1991" role="doc-biblioref">62</a>)</span>.</li>
+<li>Next I did a search for <code>"antibody" (any field) AND ("censor") (any field)</code>, which had about 700 results. So I reviewed the titles and abstracts and saved any relevant articles <span class="citation" data-cites="saulo2021 martinez-florez2021 gilbert2023 moulton1996 moulton1995 xu2015 liu2013 aragon1993 lee2018 gilbert2019 lapidus2011 martinez-florez2013 dagne2013 martinez-florez2018 campbell2019 tang2018 martinez-florez2015 bonner2021 law1992 nauta2006 sweeting2010 gomez1992 xu2015c bergstrand2009 delabre2017 zhao2018 wilber2020 cauchemez2012 zhang2013 teunis2002 stepanek2023 tran2021 cavalcante2018 mahiane2014 kafatos2005 mossong2000 goeyvaerts2015 donovan2019 jewell1994 desousa2018 cheuvart2013 seaman2001 cheung2019 zeng2010 coudeville2010 xu2016 huang2009 dowd2009 tan1992 yu2012 nhat2017 martinez-florez2021a lumley2021 strzalkowska-kominiak2010 li2008">(<a href="#ref-xu2015" role="doc-biblioref">1</a>,<a href="#ref-bergstrand2009" role="doc-biblioref">6</a>,<a href="#ref-cauchemez2012" role="doc-biblioref">7</a>,<a href="#ref-tran2021" role="doc-biblioref">9</a>,<a href="#ref-saulo2021" role="doc-biblioref">63</a>–<a href="#ref-li2008" role="doc-biblioref">113</a>)</span>.</li>
+<li>I think a more comprehensive search string would be <code>“(TS=(nondetect*) or TS=(non-detect*) or TS=(censor*)) AND (TS=(antibody) or TS=(immun*)) NOT (TS=(survival))”</code> but when I went to do that, I got like a thousand more results and didn’t want to look through all of them. So if we decide to independently do a review I’ll go back to that.</li>
+<li>By searching the keyword “non-detects”, I also found some additional papers, and there were a handful from miscellaneous other places as well. <span class="citation" data-cites="xu2015 white2023 mcgrory2020 gelman2004 kato2013 zhang2004 bolognese1994 bergstrand2009 baccarelli2005 cauchemez2012 authority2010 tran2021 helsel2010 sherina2020 cohen1963 eilers2012 StanManual wijeysundera2012">(<a href="#ref-xu2015" role="doc-biblioref">1</a>,<a href="#ref-bergstrand2009" role="doc-biblioref">6</a>–<a href="#ref-tran2021" role="doc-biblioref">9</a>,<a href="#ref-white2023" role="doc-biblioref">114</a>–<a href="#ref-wijeysundera2012" role="doc-biblioref">126</a>)</span>.</li>
+<li>As you can see, these were not all unique entries, but since this isn’t a formal systematic review I automatically deduplicated in Zotero and didn’t count anything. But according to the Quarto doc there were 126 unique citations at this point.</li>
+</ul>
+</section>
+<section id="todo" class="level1">
+<h1>TODO</h1>
+<ul>
+<li>The next thing to do is skim through each paper, and determine which are worth reading in-depth, which I did in a google sheet that can be found at this link: <a href="LINK">LINK</a>.</li>
+<li>We found # papers which were relevant [CITE THEM].</li>
+<li>We identified a few papers as being of key importance [CITE THEM], so we looked through the citations to find other relevant papers we had missed. We found SOME papers through citations [CITE THEM]. We then skimmed and summarized those papers to find the relevant ones. [CITE THEM].</li>
+<li>Finally, we imported the zotero collection into ResearchRabbit to find additional relevant papers using AI. We identified SOME additional references which we skimmed and summarized [CITE THEM], including SOME very relevant papers [CITE THEM].</li>
+<li>After finding papers, we took the collection of the most relevant papers, as detailed, and synthesized the results.</li>
+</ul>
+<!-- END OF FILE -->
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-xu2015" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Xu Y, Lam KF, Ooi EE, et al. <a href="https://doi.org/10.1080/10543406.2014.919936">A simple and powerful method for the estimation of intervention effects on serological endpoints using paired interval-censored data</a>. <em>J Biopharm Stat</em>. 2015;25(1):124–136. </div>
+</div>
+<div id="ref-zelner2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Zelner J, Petrie JG, Trangucci R, et al. <a href="https://doi.org/10.1093/infdis/jiz055">Effects of <span>Sequential Influenza A</span>(<span>H1N1</span>)Pdm09 <span>Vaccination</span> on <span>Antibody Waning</span></a>. <em>The Journal of Infectious Diseases</em>. 2019;220(1):12–19. </div>
+</div>
+<div id="ref-lindsey1998" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Lindsey JC, Ryan LM. <a href="https://doi.org/10.1002/(SICI)1097-0258(19980130)17:2<219::AID-SIM735>3.0.CO;2-O">Methods for interval-censored data</a>. <em>Statistics in Medicine</em>. 1998;17(2):219–238. </div>
+</div>
+<div id="ref-hewett2007" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Hewett P, Ganser GH. <a href="https://doi.org/10.1093/annhyg/mem045">A comparison of several methods for analyzing censored data</a>. <em>Ann Occup Hyg</em>. 2007;51(7):611–632. </div>
+</div>
+<div id="ref-zhegnoun2008" class="csl-entry" role="listitem">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Zhegnoun A, Pascal M, Fréry N, et al. Dealing with the non-detected and non-quantified data. <span>The</span> example of the serum dioxin data in the french dioxin and incinerators study. <em>Organohalogen Compounds</em>. 2008;69:2288–2291. </div>
+</div>
+<div id="ref-bergstrand2009" class="csl-entry" role="listitem">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">Bergstrand M, Karlsson MO. <a href="https://doi.org/10.1208/s12248-009-9112-5">Handling <span>Data Below</span> the <span>Limit</span> of <span>Quantification</span> in <span>Mixed Effect Models</span></a>. <em>AAPS J</em>. 2009;11(2):371–380. </div>
+</div>
+<div id="ref-cauchemez2012" class="csl-entry" role="listitem">
+<div class="csl-left-margin">7. </div><div class="csl-right-inline">Cauchemez S, Horby P, Fox A, et al. <a href="https://doi.org/10.1371/journal.ppat.1003061">Influenza <span>Infection Rates</span>, <span>Measurement Errors</span> and the <span>Interpretation</span> of <span>Paired Serology</span></a>. <em>PLOS Pathogens</em>. 2012;8(12):e1003061. </div>
+</div>
+<div id="ref-authority2010" class="csl-entry" role="listitem">
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">Authority EFS. <a href="https://doi.org/10.2903/j.efsa.2010.1557">Management of left-censored data in dietary exposure assessment of chemical substances</a>. <em>EFSA Journal</em>. 2010;8(3):1557. </div>
+</div>
+<div id="ref-tran2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">Tran TMP, Abrams S, Aerts M, et al. <a href="https://doi.org/10.1002/sim.8995">Measuring association among censored antibody titer data</a>. <em>Statistics in Medicine</em>. 2021;40(16):3740–3761. </div>
+</div>
+<div id="ref-el-shaarawi1992" class="csl-entry" role="listitem">
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">El-Shaarawi AH, Esterby SR. <a href="https://doi.org/10.1016/0043-1354(92)90015-V">Replacement of censored observations by a constant: <span>An</span> evaluation</a>. <em>Water Research</em>. 1992;26(6):835–844. </div>
+</div>
+<div id="ref-little2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">11. </div><div class="csl-right-inline">Little RJA, Rubin DB. Statistical analysis with missing data. Third edition. <span>Hoboken, NJ</span>: <span>Wiley</span>; 2020.</div>
+</div>
+<div id="ref-chen2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">12. </div><div class="csl-right-inline">Chen H, Quandt SA, Grzywacz JG, et al. <a href="https://doi.org/10.1002/env.2193">A <span>Bayesian</span> multiple imputation method for handling longitudinal pesticide data with values below the limit of detection</a>. <em>Environmetrics</em>. 2013;24(2):132–142. </div>
+</div>
+<div id="ref-irby2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">13. </div><div class="csl-right-inline">Irby DJ, Ibrahim ME, Dauki AM, et al. <a href="https://doi.org/10.1002/psp4.12611">Approaches to handling missing or <span>“problematic”</span> pharmacology data: <span>Pharmacokinetics</span></a>. <em>CPT: Pharmacometrics &amp; Systems Pharmacology</em>. 2021;10(4):291–308. </div>
+</div>
+<div id="ref-svahn2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">14. </div><div class="csl-right-inline">Svahn C, Villani M. Bayesian <span>Prediction</span> with <span>Covariates Subject</span> to <span>Detection Limits</span>. 2022;(<a href="https://arxiv.org/abs/2201.07874">https://arxiv.org/abs/2201.07874</a>). (Accessed June 2, 2023)</div>
+</div>
+<div id="ref-groth2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">15. </div><div class="csl-right-inline">Groth C, Banerjee S, Ramachandran G, et al. <a href="https://doi.org/10.1093/annweh/wxw003">Bivariate <span>Left-Censored Bayesian Model</span> for <span>Predicting Exposure</span>: <span>Preliminary Analysis</span> of <span>Worker Exposure</span> during the <span>Deepwater Horizon Oil Spill</span></a>. <em>Annals of Work Exposures and Health</em>. 2017;61(1):76–86. </div>
+</div>
+<div id="ref-sun2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">16. </div><div class="csl-right-inline">Sun J, Chen D-G, eds. <a href="https://doi.org/10.1007/978-3-031-12366-5">Emerging <span>Topics</span> in <span>Modeling Interval-Censored Survival Data</span></a>. <span>Cham</span>: <span>Springer International Publishing</span>; 2022.</div>
+</div>
+<div id="ref-jaber2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">17. </div><div class="csl-right-inline">Jaber MM, Cheng S, Brundage RC. <a href="https://doi.org/10.1002/psp4.12616">Evaluation of bias in weighted residual calculations when handling below the limit of quantification data using <span>Beal</span>’s <span>M3</span> method</a>. <em>CPT: Pharmacometrics &amp; Systems Pharmacology</em>. 2021;10(4):275–278. </div>
+</div>
+<div id="ref-yang2010" class="csl-entry" role="listitem">
+<div class="csl-left-margin">18. </div><div class="csl-right-inline">Yang S, Roger J. <a href="https://doi.org/10.1002/pst.400">Evaluations of <span>Bayesian</span> and maximum likelihood methods in <span>PK</span> models with below-quantification-limit data</a>. <em>Pharmaceutical Statistics</em>. 2010;9(4):313–330. </div>
+</div>
+<div id="ref-arunajadai2012" class="csl-entry" role="listitem">
+<div class="csl-left-margin">19. </div><div class="csl-right-inline">Arunajadai SG, Rauh VA. <a href="https://doi.org/10.1007/s10651-012-0191-6">Handling covariates subject to limits of detection in regression</a>. <em>Environ Ecol Stat</em>. 2012;19(3):369–391. </div>
+</div>
+<div id="ref-keizer2015" class="csl-entry" role="listitem">
+<div class="csl-left-margin">20. </div><div class="csl-right-inline">Keizer RJ, Jansen RS, Rosing H, et al. <a href="https://doi.org/10.1002/prp2.131">Incorporation of concentration data below the limit of quantification in population pharmacokinetic analyses</a>. <em>Pharmacol Res Perspect</em>. 2015;3(2). </div>
+</div>
+<div id="ref-groth2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">21. </div><div class="csl-right-inline">Groth CP, Banerjee S, Ramachandran G, et al. <a href="https://doi.org/10.1002/env.2505">Multivariate left-censored <span>Bayesian</span> modeling for predicting exposure using multiple chemical predictors</a>. <em>Environmetrics</em>. 2018;29(4):e2505. </div>
+</div>
+<div id="ref-breen1996" class="csl-entry" role="listitem">
+<div class="csl-left-margin">22. </div><div class="csl-right-inline">Breen R. <a href="https://doi.org/10.4135/9781412985611">Regression <span>Models</span>: <span>Censored</span>, <span>Sample Selected</span>, or <span>Truncated Data</span></a>. <span>SAGE Publications, Inc.</span>; 1996.</div>
+</div>
+<div id="ref-matsouaka2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">23. </div><div class="csl-right-inline">Matsouaka RA, Atem FD. <a href="https://doi.org/10.1002/sim.8704">Regression with a right-censored predictor using inverse probability weighting methods</a>. <em>Statistics in Medicine</em>. 2020;39(27):4001–4015. </div>
+</div>
+<div id="ref-bernhardt2015" class="csl-entry" role="listitem">
+<div class="csl-left-margin">24. </div><div class="csl-right-inline">Bernhardt PW, Wang HJ, Zhang D. <a href="https://doi.org/10.1007/s12561-013-9099-4">Statistical <span>Methods</span> for <span>Generalized Linear Models</span> with <span>Covariates Subject</span> to <span>Detection Limits</span></a>. <em>Stat Biosci</em>. 2015;7(1):68–89. </div>
+</div>
+<div id="ref-helsel2012" class="csl-entry" role="listitem">
+<div class="csl-left-margin">25. </div><div class="csl-right-inline">Helsel DR. Statistics for censored environmental data using <span>Minitab</span> and <span>R</span>. 2nd ed. <span>Hoboken, N.J</span>: <span>Wiley</span>; 2012.</div>
+</div>
+<div id="ref-gomez2009" class="csl-entry" role="listitem">
+<div class="csl-left-margin">26. </div><div class="csl-right-inline">Gómez G, Calle ML, Oller R, et al. <a href="https://doi.org/10.1177/1471082X0900900402">Tutorial on methods for interval-censored data and their implementation in <span>R</span></a>. <em>Statistical Modelling</em>. 2009;9(4):259–297. </div>
+</div>
+<div id="ref-jusko2012" class="csl-entry" role="listitem">
+<div class="csl-left-margin">27. </div><div class="csl-right-inline">Jusko WJ. <a href="https://doi.org/10.1007/s11095-012-0805-6">Use of <span>Pharmacokinetic Data Below Lower Limit</span> of <span>Quantitation Values</span></a>. <em>Pharm Res</em>. 2012;29(9):2628–2631. </div>
+</div>
+<div id="ref-hecht2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">28. </div><div class="csl-right-inline">Hecht M, Veigure R, Couchman L, et al. <a href="https://doi.org/10.4155/bio-2018-0078">Utilization of data below the analytical limit of quantitation in pharmacokinetic analysis and modeling: Promoting interdisciplinary debate</a>. <em>Bioanalysis</em>. 2018;10(15):1229–1248. </div>
+</div>
+<div id="ref-beal2001" class="csl-entry" role="listitem">
+<div class="csl-left-margin">29. </div><div class="csl-right-inline">Beal SL. Ways to <span>Fit</span> a <span>PK Model</span> with <span>Some Data Below</span> the <span>Quantification Limit</span>. <em>Journal of Pharmacokinetics and Pharmacodynamics</em>. 2001;28(5):481–504. </div>
+</div>
+<div id="ref-bou-hamad2011" class="csl-entry" role="listitem">
+<div class="csl-left-margin">30. </div><div class="csl-right-inline">Bou-Hamad I, Larocque D, Ben-Ameur H. <a href="https://doi.org/10.1214/09-SS047">A review of survival trees</a>. <em>Statist. Surv.</em> 2011;5:44–71. </div>
+</div>
+<div id="ref-yu2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">31. </div><div class="csl-right-inline">Yu Q, Hsu Y. A <span>Review</span> of <span>Various Models</span> for <span>Interval-Censored Data</span>. In: Chen DG, Sun J, Peace KE, eds. <em><span>INTERVAL-CENSORED TIME-TO-EVENT DATA</span>: <span>METHODS AND APPLICATIONS</span></em>. <span>Boca Raton</span>: <span>CRC Press-Taylor &amp; Francis Group</span>; 2013:29–42.</div>
+</div>
+<div id="ref-chen2009" class="csl-entry" role="listitem">
+<div class="csl-left-margin">32. </div><div class="csl-right-inline">Chen SX, Van Keilegom I. <a href="https://doi.org/10.1007/s11749-009-0159-5">A review on empirical likelihood methods for regression</a>. <em>Test</em>. 2009;18(3):415–447. </div>
+</div>
+<div id="ref-becker2001" class="csl-entry" role="listitem">
+<div class="csl-left-margin">33. </div><div class="csl-right-inline">Becker NG, Marschner IC. <a href="https://doi.org/10.1191/096228001667140468">Advances in medical statistics arising from the <span>AIDS</span> epidemic</a>. <em>Stat. Methods Med. Res.</em> 2001;10(2):117–140. </div>
+</div>
+<div id="ref-guo2014" class="csl-entry" role="listitem">
+<div class="csl-left-margin">34. </div><div class="csl-right-inline">Guo S, Zeng D. <a href="https://doi.org/10.1016/j.jspi.2013.10.008">An overview of semiparametric models in survival analysis</a>. <em>J. Stat. Plan. Infer.</em> 2014;151:1–16. </div>
+</div>
+<div id="ref-onofri2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">35. </div><div class="csl-right-inline">Onofri A, Piepho H-P, Kozak M. <a href="https://doi.org/10.1111/aab.12477">Analysing censored data in agricultural research: <span>A</span> review with examples and software tips</a>. <em>Ann. Appl. Biol.</em> 2019;174(1):3–13. </div>
+</div>
+<div id="ref-boukeloua2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">36. </div><div class="csl-right-inline">Boukeloua M, Messaci F. <a href="https://doi.org/10.1080/10485252.2016.1164312">Asymptotic normality of kernel estimators based upon incomplete data</a>. <em>J. Nonparametr. Stat.</em> 2016;28(3):469–486. </div>
+</div>
+<div id="ref-leung1997" class="csl-entry" role="listitem">
+<div class="csl-left-margin">37. </div><div class="csl-right-inline">Leung KM, Elashoff RM, Afifi AA. <a href="https://doi.org/10.1146/annurev.publhealth.18.1.83">Censoring issues in survival analysis</a>. <em>Annu. Rev. Public Health</em>. 1997;18:83–104. </div>
+</div>
+<div id="ref-wang2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">38. </div><div class="csl-right-inline">Wang Y, Flowers CR, Li Z, et al. <a href="https://doi.org/10.1016/j.jbi.2022.104117"><span>CondiS</span>: <span>A</span> conditional survival distribution-based method for censored data imputation overcoming the hurdle in machine learning-based survival analysis</a>. <em>J Biomed Inform</em>. 2022;131:104117. </div>
+</div>
+<div id="ref-fievet2010" class="csl-entry" role="listitem">
+<div class="csl-left-margin">39. </div><div class="csl-right-inline">Fievet B, Della Vedova C. <a href="https://doi.org/10.1016/j.jenvrad.2009.07.007">Dealing with non-detect values in time-series measurements of radionuclide concentration in the marine environment</a>. <em>J. Environ. Radioact.</em> 2010;101(1):1–7. </div>
+</div>
+<div id="ref-yao2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">40. </div><div class="csl-right-inline">Yao W, Frydman H, Larocque D, et al. <a href="https://doi.org/10.1177/09622802221111549">Ensemble methods for survival function estimation with time-varying covariates</a>. <em>Stat. Methods Med. Res.</em> 2022;31(11):2217–2236. </div>
+</div>
+<div id="ref-nieuwenhuijsen1997" class="csl-entry" role="listitem">
+<div class="csl-left-margin">41. </div><div class="csl-right-inline">Nieuwenhuijsen MJ. <a href="https://doi.org/10.1007/s004200050222">Exposure assessment in occupational epidemiology: Measuring present exposures with an example of a study of occupational asthma</a>. <em>Int. Arch. Occup. Environ. Health</em>. 1997;70(5):295–308. </div>
+</div>
+<div id="ref-turkson2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">42. </div><div class="csl-right-inline">Turkson AJ, Ayiah-Mensah F, Nimoh V. <a href="https://doi.org/10.1155/2021/9307475">Handling <span>Censoring</span> and <span>Censored Data</span> in <span>Survival Analysis</span>: <span>A Standalone Systematic Literature Review</span></a>. <em>Int. J. Math. Math. Sci.</em> 2021;2021:9307475. </div>
+</div>
+<div id="ref-mihalache2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">43. </div><div class="csl-right-inline">Mihalache OA, Dall’Asta C. <a href="https://doi.org/10.1016/j.tifs.2023.04.011">Left-censored data and where to find them: <span>Current</span> implications in mycotoxin-related risk assessment, legislative and economic impacts</a>. <em>Trends in Food Science &amp; Technology</em>. 2023;136:112–119. </div>
+</div>
+<div id="ref-emura2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">44. </div><div class="csl-right-inline">Emura T, Michimae H. <a href="https://doi.org/10.1002/qre.3161">Left-truncated and right-censored field failure data: <span>Review</span> of parametric analysis for reliability</a>. <em>Qual. Reliab. Eng. Int.</em> 2022;38(7):3919–3934. </div>
+</div>
+<div id="ref-horton1999" class="csl-entry" role="listitem">
+<div class="csl-left-margin">45. </div><div class="csl-right-inline">Horton NJ, Laird NM. <a href="https://doi.org/10.1191/096228099673120862">Maximum likelihood analysis of generalized linear models with missing covariates</a>. <em>Stat. Methods Med. Res.</em> 1999;8(1):37–50. </div>
+</div>
+<div id="ref-goldkuhle2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">46. </div><div class="csl-right-inline">Goldkuhle M, Hirsch C, Iannizzi C, et al. <a href="https://doi.org/10.1016/j.jclinepi.2023.05.023">Meta-epidemiological review identified variable reporting and handling of time-to-event analyses in publications of trials included in meta-analyses of systematic reviews</a>. <em>J. Clin. Epidemiol.</em> 2023;159:174–189. </div>
+</div>
+<div id="ref-darrigo2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">47. </div><div class="csl-right-inline">D’Arrigo G, Leonardis D, Abd ElHafeez S, et al. <a href="https://doi.org/10.1155/2021/2290120">Methods to <span class="nocase">Analyse Time-to-Event Data</span>: <span>The Kaplan-Meier Survival Curve</span></a>. <em>Oxidative Med. Cell. Longev.</em> 2021;2021:2290120. </div>
+</div>
+<div id="ref-wu2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">48. </div><div class="csl-right-inline">Wu L, Zhang H. <a href="https://doi.org/10.1155/2018/1581979">Mixed <span>Effects Models</span> with <span>Censored Covariates</span>, with <span>Applications</span> in <span>HIV</span>/<span>AIDS Studies</span></a>. <em>J. Probab. Stat.</em> 2018;2018:1581979. </div>
+</div>
+<div id="ref-winship1992" class="csl-entry" role="listitem">
+<div class="csl-left-margin">49. </div><div class="csl-right-inline">Winship C, Mare R. <a href="https://doi.org/10.1146/annurev.so.18.080192.001551">Models for <span>Sample Selection Bias</span></a>. <em>Annu. Rev. Sociol.</em> 1992;18:327–350. </div>
+</div>
+<div id="ref-rabe-hesketh2001" class="csl-entry" role="listitem">
+<div class="csl-left-margin">50. </div><div class="csl-right-inline">Rabe-Hesketh S, Yang SY, Pickles A. <a href="https://doi.org/10.1191/096228001682157634">Multilevel models for censored and latent responses</a>. <em>Stat. Methods Med. Res.</em> 2001;10(6):409–427. </div>
+</div>
+<div id="ref-cramer2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">51. </div><div class="csl-right-inline">Cramer E. <a href="https://doi.org/10.1002/wics.1571">Ordered and censored lifetime data in reliability: <span>An</span> illustrative review</a>. <em>Wiley Interdiscip. Rev.-Comput. Stat.</em> 2023;15(2):e1571. </div>
+</div>
+<div id="ref-shih2002" class="csl-entry" role="listitem">
+<div class="csl-left-margin">52. </div><div class="csl-right-inline">Shih WCJ. <a href="https://doi.org/10.1186/1468-6708-3-4">Problems in dealing with missing data and informative censoring in clinical trials</a>. <em>Curr. Control Trials Cardivasc. Med.</em> 2002;3:4. </div>
+</div>
+<div id="ref-sinha1997" class="csl-entry" role="listitem">
+<div class="csl-left-margin">53. </div><div class="csl-right-inline">Sinha D, Dey DK. <a href="https://doi.org/10.2307/2965586">Semiparametric <span>Bayesian</span> analysis of survival data</a>. <em>J. Am. Stat. Assoc.</em> 1997;92(439):1195–1212. </div>
+</div>
+<div id="ref-agarwal2012" class="csl-entry" role="listitem">
+<div class="csl-left-margin">54. </div><div class="csl-right-inline">Agarwal GG. <a href="https://doi.org/10.1007/s13193-012-0149-z">Statistics for <span>Surgeons</span> - <span>Understanding Survival Analysis</span></a>. <em>India J. Surg. Oncol.</em> 2012;3(3):208–214. </div>
+</div>
+<div id="ref-joffe2005" class="csl-entry" role="listitem">
+<div class="csl-left-margin">55. </div><div class="csl-right-inline">Joffe M, Key J, Best N, et al. <a href="https://doi.org/10.1093/aje/kwi172">Studying time to pregnancy by use of a retrospective design</a>. <em>Am. J. Epidemiol.</em> 2005;162(2):115–124. </div>
+</div>
+<div id="ref-gomez1992a" class="csl-entry" role="listitem">
+<div class="csl-left-margin">56. </div><div class="csl-right-inline">Gomez G, Julià O, Utzet F, et al. <a href="https://doi.org/10.1007/978-94-015-7983-4_16">Survival <span>Analysis For Left Censored Data</span></a>. In: Klein JP, Goel PK, eds. <em>Survival <span>Analysis</span>: <span>State</span> of the <span>Art</span></em>. <span>Dordrecht</span>: <span>Springer Netherlands</span>; 1992:269–288.</div>
+</div>
+<div id="ref-lee1997" class="csl-entry" role="listitem">
+<div class="csl-left-margin">57. </div><div class="csl-right-inline">Lee ET, Go OT. <a href="https://doi.org/10.1146/annurev.publhealth.18.1.105">Survival analysis in public health research</a>. <em>Annu. Rev. Public Health</em>. 1997;18:105–134. </div>
+</div>
+<div id="ref-troxel2002" class="csl-entry" role="listitem">
+<div class="csl-left-margin">58. </div><div class="csl-right-inline">Troxel AB. <a href="https://doi.org/10.1191/0962280202sm285ra">Techniques for incorporating longitudinal measurements into analyses of survival data from clinical trials</a>. <em>Stat. Methods Med. Res.</em> 2002;11(3):237–245. </div>
+</div>
+<div id="ref-manteiga1994" class="csl-entry" role="listitem">
+<div class="csl-left-margin">59. </div><div class="csl-right-inline">Manteiga W, Sanchez J, Romo J. The <span>Bootstrap</span> - a <span>Review</span>. <em>Comput. Stat.</em> 1994;9(3):165–205. </div>
+</div>
+<div id="ref-shoari2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">60. </div><div class="csl-right-inline">Shoari N, Dube J-S. <a href="https://doi.org/10.1002/etc.4046">Toward improved analysis of concentration data: <span>Embracing</span> nondetects</a>. <em>Environ. Toxicol. Chem.</em> 2018;37(3):643–656. </div>
+</div>
+<div id="ref-christofaro2014" class="csl-entry" role="listitem">
+<div class="csl-left-margin">61. </div><div class="csl-right-inline">Christofaro C, Leao MMD. <a href="https://doi.org/10.1590/S0100-40422014000100019"><span>Treatment of Censored Data in Environmental Studies</span></a>. <em>Quim. Nova</em>. 2014;37(1):104–U142. </div>
+</div>
+<div id="ref-cohen1991" class="csl-entry" role="listitem">
+<div class="csl-left-margin">62. </div><div class="csl-right-inline">Cohen AC. Truncated and <span>Censored Samples</span>: Theory and applications. <span>CRC Press</span>; 1991.</div>
+</div>
+<div id="ref-saulo2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">63. </div><div class="csl-right-inline">Saulo H, Leao J, Nobre J, et al. <a href="https://doi.org/10.1214/20-BJPS494">A class of asymmetric regression models for left-censored data</a>. <em>BRAZILIAN JOURNAL OF PROBABILITY AND STATISTICS</em>. 2021;35(1):62–84. </div>
+</div>
+<div id="ref-martinez-florez2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">64. </div><div class="csl-right-inline">Martinez-Florez G, Vergara-Cardozo S, Tovar-Falon R. <a href="https://doi.org/10.3390/sym13081419">A class of exponentiated regression model for non negative censored data with an application to antibody response to vaccine</a>. <em>SYMMETRY-BASEL</em>. 2021;13(1419). </div>
+</div>
+<div id="ref-gilbert2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">65. </div><div class="csl-right-inline">Gilbert PB, Fong Y, Kenny A, et al. <a href="https://doi.org/10.1093/biostatistics/kxac024">A controlled effects approach to assessing immune correlates of protection</a>. <em>BIOSTATISTICS</em>. 2023;24(4):850–865. </div>
+</div>
+<div id="ref-moulton1996" class="csl-entry" role="listitem">
+<div class="csl-left-margin">66. </div><div class="csl-right-inline">Moulton L, Halsey N. <a href="https://doi.org/10.1016/0264-410X(96)00017-5">A mixed gamma model for regression analyses of quantitative assay data</a>. <em>VACCINE</em>. 1996;14(12):1154–1158. </div>
+</div>
+<div id="ref-moulton1995" class="csl-entry" role="listitem">
+<div class="csl-left-margin">67. </div><div class="csl-right-inline">Moulton LH, Halsey NA. A <span>Mixture Model</span> with <span>Detection Limits</span> for <span>Regression Analyses</span> of <span>Antibody Response</span> to <span>Vaccine</span>. <em>Biometrics</em> [electronic article]. 1995;51(4):1570–1578. (<a href="https://www.jstor.org/stable/2533289">https://www.jstor.org/stable/2533289</a>). (Accessed November 6, 2023)</div>
+</div>
+<div id="ref-liu2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">68. </div><div class="csl-right-inline">Liu GF, Hu P, Mehrotra DV. <a href="https://doi.org/10.1080/19466315.2013.783503">A two-step multiple imputation for analysis of repeated measures with left-censored and missing data</a>. <em>STATISTICS IN BIOPHARMACEUTICAL RESEARCH</em>. 2013;5(2):116–125. </div>
+</div>
+<div id="ref-aragon1993" class="csl-entry" role="listitem">
+<div class="csl-left-margin">69. </div><div class="csl-right-inline">ARAGON J, WESTON M, WARNER R. <a href="https://doi.org/10.1016/0264-410X(93)90230-U">Analysis of disease progression from clinical observations of united-states air-force active duty members infected with the human-immunodeficiency-virus - distribution of aids survival-time from interval-censored observations</a>. <em>VACCINE</em>. 1993;11(5):552–554. </div>
+</div>
+<div id="ref-lee2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">70. </div><div class="csl-right-inline">Lee U, Sun Y, Scheike TH, et al. <a href="https://doi.org/10.1016/j.csda.2018.01.003">Analysis of generalized semiparametric regression models for cumulative incidence functions with missing covariates</a>. <em>COMPUTATIONAL STATISTICS &amp; DATA ANALYSIS</em>. 2018;122:59–79. </div>
+</div>
+<div id="ref-gilbert2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">71. </div><div class="csl-right-inline">Gilbert PB, Zhang Y, Rudnicki E, et al. <a href="https://doi.org/10.1002/sim.8310">Assessing pharmacokinetic marker correlates of outcome, with application to antibody prevention efficacy trials</a>. <em>STATISTICS IN MEDICINE</em>. 2019;38(23):4503–4518. </div>
+</div>
+<div id="ref-lapidus2011" class="csl-entry" role="listitem">
+<div class="csl-left-margin">72. </div><div class="csl-right-inline">Lapidus N, de Lamballerie X, Salez N, et al. Association between pandemic and seasonal influenza vaccination and haemagglutination antibody titers against <span>A</span>/<span>H1N1v</span>: A national representative survey in <span>France</span>, nested in the <span>“<span>Cohorts</span> for <span>Pandemic Influenza</span>”</span> (<span>CoPanFlu</span> - <span>France</span>). <em>INFLUENZA AND OTHER RESPIRATORY VIRUSES</em>. 2011;5(1):180–183. </div>
+</div>
+<div id="ref-martinez-florez2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">73. </div><div class="csl-right-inline">Martinez-Florez G, Bolfarine H, Gomez HW. <a href="https://doi.org/10.1002/bimj.201100116">Asymmetric regression models with limited responses with an application to antibody response to vaccine</a>. <em>BIOMETRICAL JOURNAL</em>. 2013;55(2):156–172. </div>
+</div>
+<div id="ref-dagne2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">74. </div><div class="csl-right-inline">Dagne GA. <a href="https://doi.org/10.1080/10543406.2013.813517">Bayesian inference for skew-normal mixture models with left-censoring</a>. <em>JOURNAL OF BIOPHARMACEUTICAL STATISTICS</em>. 2013;23(5):1023–1041. </div>
+</div>
+<div id="ref-martinez-florez2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">75. </div><div class="csl-right-inline">Martinez-Florez G, Bolfarine H, Gomez HW. <a href="https://doi.org/10.4310/SII.2018.v11.n2.a3">Censored bimodal symmetric-asymmetric families</a>. <em>STATISTICS AND ITS INTERFACE</em>. 2018;11(2):237–249. </div>
+</div>
+<div id="ref-campbell2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">76. </div><div class="csl-right-inline">Campbell KR, Juarez-Colunga E, Grunwald GK, et al. <a href="https://doi.org/10.1186/s12874-019-0773-1">Comparison of a time-varying covariate model and a joint model of time-to-event outcomes in the presence of measurement error and interval censoring: Application to kidney transplantation</a>. <em>BMC MEDICAL RESEARCH METHODOLOGY</em>. 2019;19(130). </div>
+</div>
+<div id="ref-tang2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">77. </div><div class="csl-right-inline">Tang Y, Wang HJ, Liang H. <a href="https://doi.org/10.1111/sjos.12307">Composite estimation for single-index models with responses subject to detection limits</a>. <em>SCANDINAVIAN JOURNAL OF STATISTICS</em>. 2018;45(3):444–464. </div>
+</div>
+<div id="ref-martinez-florez2015" class="csl-entry" role="listitem">
+<div class="csl-left-margin">78. </div><div class="csl-right-inline">Martinez-Florez G, Bolfarine H, Gomez HW. <a href="https://doi.org/10.1007/s11749-014-0406-2">Doubly censored power-normal regression models with inflation</a>. <em>TEST</em>. 2015;24(2):265–286. </div>
+</div>
+<div id="ref-bonner2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">79. </div><div class="csl-right-inline">Bonner KAO, Cruz JS, Sacramento GA, et al. <a href="https://doi.org/10.1093/aje/kwaa253">Effects of accounting for interval-censored antibody titer decay on seroincidence in a longitudinal cohort study of leptospirosis</a>. <em>AMERICAN JOURNAL OF EPIDEMIOLOGY</em>. 2021;190(5):893–899. </div>
+</div>
+<div id="ref-law1992" class="csl-entry" role="listitem">
+<div class="csl-left-margin">80. </div><div class="csl-right-inline">LAW C, BROOKMEYER R. <a href="https://doi.org/10.1002/sim.4780111204">Effects of midpoint imputation on the analysis of doubly censored-data</a>. <em>STATISTICS IN MEDICINE</em>. 1992;11(12):1569–1578. </div>
+</div>
+<div id="ref-nauta2006" class="csl-entry" role="listitem">
+<div class="csl-left-margin">81. </div><div class="csl-right-inline">Nauta JJP. <a href="https://doi.org/10.1016/j.biologicals.2005.09.001">Eliminating bias in the estimation of the geometric mean of <span>HI</span> titres</a>. <em>BIOLOGICALS</em>. 2006;34(3):183–186. </div>
+</div>
+<div id="ref-sweeting2010" class="csl-entry" role="listitem">
+<div class="csl-left-margin">82. </div><div class="csl-right-inline">Sweeting MJ, De Angelis D, Parry J, et al. <a href="https://doi.org/10.1002/sim.3941">Estimating the distribution of the window period for recent <span>HIV</span> infections: <span>A</span> comparison of statistical methods</a>. <em>STATISTICS IN MEDICINE</em>. 2010;29(30, SI):3194–3202. </div>
+</div>
+<div id="ref-gomez1992" class="csl-entry" role="listitem">
+<div class="csl-left-margin">83. </div><div class="csl-right-inline">GOMEZ G. Estimation of induction distributions with doubly censored-data and application to aids. <em>THEORY OF PROBABILITY AND ITS APPLICATIONS</em>. 1992;37(1):32–39. </div>
+</div>
+<div id="ref-xu2015c" class="csl-entry" role="listitem">
+<div class="csl-left-margin">84. </div><div class="csl-right-inline">Xu Y, Lam KF, Cowling BJ, et al. <a href="https://doi.org/10.1002/sim.6346">Estimation of intervention effect using paired interval-censored data with clumping below lower detection limit</a>. <em>STATISTICS IN MEDICINE</em>. 2015;34(2):307–316. </div>
+</div>
+<div id="ref-delabre2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">85. </div><div class="csl-right-inline">Delabre RM, Salez N, Lapidus N, et al. <a href="https://doi.org/10.1017/S0950268816002156">Immunity against influenza <span>A</span>(<span>H1N1</span>) infections is determined by age at the time of initial strain circulation</a>. <em>EPIDEMIOLOGY AND INFECTION</em>. 2017;145(1):141–147. </div>
+</div>
+<div id="ref-zhao2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">86. </div><div class="csl-right-inline">Zhao X, Ning Y, Chen MI-C, et al. <a href="https://doi.org/10.1093/aje/kwx201">Individual and population trajectories of influenza antibody titers over multiple seasons in a tropical country</a>. <em>AMERICAN JOURNAL OF EPIDEMIOLOGY</em>. 2018;187(1):135–143. </div>
+</div>
+<div id="ref-wilber2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">87. </div><div class="csl-right-inline">Wilber MQ, Webb CT, Cunningham FL, et al. <a href="https://doi.org/10.1002/ecy.2882">Inferring seasonal infection risk at population and regional scales from serology samples</a>. <em>ECOLOGY</em>. 2020;101(e02882). </div>
+</div>
+<div id="ref-zhang2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">88. </div><div class="csl-right-inline">Zhang A, Huang Y, Tian D, et al. <a href="https://doi.org/10.2807/1560-7917.ES2013.18.50.20657">Kinetics of serological responses in influenza <span>A</span>(<span>H7N9</span>)-infected patients correlate with clinical outcome in <span>China</span>, 2013</a>. <em>EUROSURVEILLANCE</em>. 2013;18(20657):38–45. </div>
+</div>
+<div id="ref-teunis2002" class="csl-entry" role="listitem">
+<div class="csl-left-margin">89. </div><div class="csl-right-inline">Teunis P, Van der Heijden O, De Melker H, et al. <a href="https://doi.org/10.1017/S0950268802007896">Kinetics of the <span>IgG</span> antibody response to pertussis toxin after infection with i/i</a>. <em>EPIDEMIOLOGY AND INFECTION</em>. 2002;129(3):479–489. </div>
+</div>
+<div id="ref-stepanek2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">90. </div><div class="csl-right-inline">Stepanek L, Habarta F, Mala I, et al. <a href="https://doi.org/10.3390/math11040819">Machine learning at the service of survival analysis: <span>Predictions</span> using time-to-event decomposition and classification applied to a decrease of blood antibodies against <span>COVID-19</span></a>. <em>MATHEMATICS</em>. 2023;11(819). </div>
+</div>
+<div id="ref-cavalcante2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">91. </div><div class="csl-right-inline">Cavalcante CV, Goncalves KCM. <a href="https://doi.org/10.1214/16-BJPS345">Mixture models applied to heterogeneous populations</a>. <em>BRAZILIAN JOURNAL OF PROBABILITY AND STATISTICS</em>. 2018;32(2):320–345. </div>
+</div>
+<div id="ref-mahiane2014" class="csl-entry" role="listitem">
+<div class="csl-left-margin">92. </div><div class="csl-right-inline">Mahiane SG, Fiamma A, Auvert B. <a href="https://doi.org/10.1002/sim.6059">Mixture models for calibrating the <span>BED</span> for <span>HIV</span> incidence testing</a>. <em>STATISTICS IN MEDICINE</em>. 2014;33(10):1767–1783. </div>
+</div>
+<div id="ref-kafatos2005" class="csl-entry" role="listitem">
+<div class="csl-left-margin">93. </div><div class="csl-right-inline">Kafatos G, Andrews N, Nardone A, et al. <a href="https://doi.org/10.1016/j.vaccine.2005.05.030">Model selection methodology for inter-laboratory standardisation of antibody titres</a>. <em>VACCINE</em>. 2005;23(42):5022–5027. </div>
+</div>
+<div id="ref-mossong2000" class="csl-entry" role="listitem">
+<div class="csl-left-margin">94. </div><div class="csl-right-inline">Mossong J, O’Callaghan C, Ratnam S. <a href="https://doi.org/10.1016/S0264-410X(00)00175-4">Modelling antibody response to measles vaccine and subsequent waning of immunity in a low exposure population</a>. <em>VACCINE</em>. 2000;19(4-5):523–529. </div>
+</div>
+<div id="ref-goeyvaerts2015" class="csl-entry" role="listitem">
+<div class="csl-left-margin">95. </div><div class="csl-right-inline">Goeyvaerts N, Leuridan E, Faes C, et al. <a href="https://doi.org/10.1002/sim.6518">Multi-disease analysis of maternal antibody decay using non-linear mixed models accounting for censoring</a>. <em>STATISTICS IN MEDICINE</em>. 2015;34(20):2858–2871. </div>
+</div>
+<div id="ref-donovan2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">96. </div><div class="csl-right-inline">Donovan KM, Hudgens MG, Gilbert PB. <a href="https://doi.org/10.1214/18-AOAS1237">Nonparametric inference for immune response thresholds of risk in vaccine studies</a>. <em>ANNALS OF APPLIED STATISTICS</em>. 2019;13(2):1147–1165. </div>
+</div>
+<div id="ref-jewell1994" class="csl-entry" role="listitem">
+<div class="csl-left-margin">97. </div><div class="csl-right-inline">JEWELL N, MALANI H, VITTINGHOFF E. <span>NONPARAMETRIC-ESTIMATION FOR A FORM OF DOUBLY CENSORED-DATA</span>, <span>WITH APPLICATION TO</span> 2 <span>PROBLEMS IN AIDS</span>. <em>JOURNAL OF THE AMERICAN STATISTICAL ASSOCIATION</em>. 1994;89(425):7–18. </div>
+</div>
+<div id="ref-desousa2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">98. </div><div class="csl-right-inline">Desousa MF, Saulo H, Leiva V, et al. <a href="https://doi.org/10.1080/02664763.2017.1322559">On a tobit-<span>Birnbaum-Saunders</span> model with an application to medical data</a>. <em>JOURNAL OF APPLIED STATISTICS</em>. 2018;45(5):932–955. </div>
+</div>
+<div id="ref-cheuvart2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">99. </div><div class="csl-right-inline">Cheuvart B, Bianco V, Caubet M, et al. <a href="https://doi.org/10.4161/hv.24168">Persistence clinical studies</a>. <em>HUMAN VACCINES &amp; IMMUNOTHERAPEUTICS</em>. 2013;9(6):1351–1357. </div>
+</div>
+<div id="ref-seaman2001" class="csl-entry" role="listitem">
+<div class="csl-left-margin">100. </div><div class="csl-right-inline">Seaman S, Bird S. <a href="https://doi.org/10.1002/sim.809">Proportional hazards model for interval-censored failure times and time-dependent covariates: Application to hazard of <span>HIV</span> infection of injecting drug users in prison</a>. <em>STATISTICS IN MEDICINE</em>. 2001;20(12):1855–1870. </div>
+</div>
+<div id="ref-cheung2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">101. </div><div class="csl-right-inline">Cheung YB, Ma X, Lam KF. <a href="https://doi.org/10.1080/19466315.2018.1473794">Regression analysis of fold-increase endpoints using a distributional approach for paired interval-censored antibody data</a>. <em>STATISTICS IN BIOPHARMACEUTICAL RESEARCH</em>. 2019;11(3):193–199. </div>
+</div>
+<div id="ref-zeng2010" class="csl-entry" role="listitem">
+<div class="csl-left-margin">102. </div><div class="csl-right-inline">Zeng L, Cook RJ, Warkentin TE. <a href="https://doi.org/10.1111/j.1541-0420.2009.01299.x">Regression analysis with a misclassified covariate from a current status observation scheme</a>. <em>BIOMETRICS</em>. 2010;66(2):415–425. </div>
+</div>
+<div id="ref-coudeville2010" class="csl-entry" role="listitem">
+<div class="csl-left-margin">103. </div><div class="csl-right-inline">Coudeville L, Bailleux F, Riche B, et al. <a href="https://doi.org/10.1186/1471-2288-10-18">Relationship between haemagglutination-inhibiting antibody titres and clinical protection against influenza: Development and application of a bayesian random-effects model</a>. <em>BMC MEDICAL RESEARCH METHODOLOGY</em>. 2010;10(18). </div>
+</div>
+<div id="ref-xu2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">104. </div><div class="csl-right-inline">Xu Y, Lam KF, Cheung YB. <a href="https://doi.org/10.1080/10543406.2016.1148705">Sample size determination for fold-increase endpoints defined by paired interval-censored data</a>. <em>JOURNAL OF BIOPHARMACEUTICAL STATISTICS</em>. 2016;26(5):978–991. </div>
+</div>
+<div id="ref-huang2009" class="csl-entry" role="listitem">
+<div class="csl-left-margin">105. </div><div class="csl-right-inline">Huang Y, Gilbert PB, Montefiori DC, et al. <a href="https://doi.org/10.1198/sbr.2009.0008">Simultaneous evaluation of the magnitude and breadth of a left- and right-censored multivariate response, with application to <span>HIV</span> vaccine development</a>. <em>STATISTICS IN BIOPHARMACEUTICAL RESEARCH</em>. 2009;1(1):81–91. </div>
+</div>
+<div id="ref-dowd2009" class="csl-entry" role="listitem">
+<div class="csl-left-margin">106. </div><div class="csl-right-inline">Dowd JB, Aiello AE. <a href="https://doi.org/10.1097/EDE.0b013e3181bb5302">Socioeconomic differentials in immune response</a>. <em>EPIDEMIOLOGY</em>. 2009;20(6):902–908. </div>
+</div>
+<div id="ref-tan1992" class="csl-entry" role="listitem">
+<div class="csl-left-margin">107. </div><div class="csl-right-inline">TAN W, SINGH K. <a href="https://doi.org/10.1016/0895-7177(92)90110-7">Some results on the probability-distributions of times to pre-aids and aids</a>. <em>MATHEMATICAL AND COMPUTER MODELLING</em>. 1992;16(11):117–155. </div>
+</div>
+<div id="ref-yu2012" class="csl-entry" role="listitem">
+<div class="csl-left-margin">108. </div><div class="csl-right-inline">Yu X, Gilbert PB, Hioe CE, et al. <a href="https://doi.org/10.1080/19466315.2011.633860">Statistical approaches to analyzing <span>HIV-1</span> neutralizing antibody assay data</a>. <em>STATISTICS IN BIOPHARMACEUTICAL RESEARCH</em>. 2012;4(1):1–13. </div>
+</div>
+<div id="ref-nhat2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">109. </div><div class="csl-right-inline">Nhat NTD, Todd S, de Bruin E, et al. <a href="https://doi.org/10.1038/s41598-017-06177-0">Structure of general-population antibody titer distributions to influenza <span>A</span> virus</a>. <em>SCIENTIFIC REPORTS</em>. 2017;7(6060). </div>
+</div>
+<div id="ref-martinez-florez2021a" class="csl-entry" role="listitem">
+<div class="csl-left-margin">110. </div><div class="csl-right-inline">Martinez-Florez G, Tovar-Falon R, Martinez-Guerra M. <a href="https://doi.org/10.3390/sym13071114">The censored beta-skew alpha-power distribution</a>. <em>SYMMETRY-BASEL</em>. 2021;13(1114). </div>
+</div>
+<div id="ref-lumley2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">111. </div><div class="csl-right-inline">Lumley SF, Wei J, O’Donnell D, et al. <a href="https://doi.org/10.1093/cid/ciab004">The duration, dynamics, and determinants of severe acute respiratory syndrome coronavirus 2 (<span>SARS-CoV-2</span>) antibody responses in individual healthcare workers</a>. <em>CLINICAL INFECTIOUS DISEASES</em>. 2021;73(3):E699–E709. </div>
+</div>
+<div id="ref-strzalkowska-kominiak2010" class="csl-entry" role="listitem">
+<div class="csl-left-margin">112. </div><div class="csl-right-inline">Strzalkowska-Kominiak E, Stute W. <a href="https://doi.org/10.1080/10485250902971740">The statistical analysis of consecutive survival data under serial dependence</a>. <em>JOURNAL OF NONPARAMETRIC STATISTICS</em>. 2010;22(PII 923667883):585–597. </div>
+</div>
+<div id="ref-li2008" class="csl-entry" role="listitem">
+<div class="csl-left-margin">113. </div><div class="csl-right-inline">Li Z, Gilbert P, Nan B. <a href="https://doi.org/10.1111/j.1541-0420.2008.00998.x">Weighted likelihood method for grouped survival data in case-cohort studies with application to <span>HIV</span> vaccine trials</a>. <em>BIOMETRICS</em>. 2008;64(4):1247–1255. </div>
+</div>
+<div id="ref-white2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">114. </div><div class="csl-right-inline">White E, Shephard MW, Cady-Pereira KE, et al. <a href="https://doi.org/10.3390/rs15102610">Accounting for <span>Non-Detects</span>: <span>Application</span> to <span>Satellite Ammonia Observations</span></a>. <em>Remote Sens.</em> 2023;15(10):2610. </div>
+</div>
+<div id="ref-mcgrory2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">115. </div><div class="csl-right-inline">McGrory E, Holian E, Morrison L. <a href="https://doi.org/10.1016/j.jconhyd.2020.103706">Assessment of groundwater processes using censored data analysis incorporating non-detect chemical, physical, and biological data</a>. <em>J. Contam. Hydrol.</em> 2020;235:103706. </div>
+</div>
+<div id="ref-gelman2004" class="csl-entry" role="listitem">
+<div class="csl-left-margin">116. </div><div class="csl-right-inline">Gelman A, Chew GL, Shnaidman M. <a href="https://doi.org/10.1111/j.0006-341X.2004.00185.x">Bayesian <span>Analysis</span> of <span>Serial Dilution Assays</span></a>. <em>Biometrics</em>. 2004;60(2):407–417. </div>
+</div>
+<div id="ref-kato2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">117. </div><div class="csl-right-inline">Kato T, Miura T, Okabe S, et al. <a href="https://doi.org/10.1007/s12560-013-9125-1">Bayesian <span>Modeling</span> of <span>Enteric Virus Density</span> in <span>Wastewater Using Left-Censored Data</span></a>. <em>Food Environ. Virol.</em> 2013;5(4):185–193. </div>
+</div>
+<div id="ref-zhang2004" class="csl-entry" role="listitem">
+<div class="csl-left-margin">118. </div><div class="csl-right-inline">Zhang Z, Lennox WC, Panu US. <a href="https://doi.org/10.1016/j.jhydrol.2004.04.017">Effect of percent non-detects on estimation bias in censored distributions</a>. <em>J. Hydrol.</em> 2004;297(1-4):74–94. </div>
+</div>
+<div id="ref-bolognese1994" class="csl-entry" role="listitem">
+<div class="csl-left-margin">119. </div><div class="csl-right-inline">Bolognese J, Nguyen H. Estimating ”non-detects” for inclusion in linear regression. In: <em><span>AMERICAN STATISTICAL ASSOCIATION</span> 1994 <span>PROCEEDINGS OF THE BIOPHARMACEUTICAL SECTION</span></em>. <span>Alexandria</span>: <span>Amer Statistical Assoc</span>; 1994:414–419.</div>
+</div>
+<div id="ref-baccarelli2005" class="csl-entry" role="listitem">
+<div class="csl-left-margin">120. </div><div class="csl-right-inline">Baccarelli A, Pfeiffer R, Consonni D, et al. <a href="https://doi.org/10.1016/j.chemosphere.2005.01.055">Handling of dioxin measurement data in the presence of non-detectable values: <span>Overview</span> of available methods and their application in the <span>Seveso</span> chloracne study</a>. <em>Chemosphere</em>. 2005;60(7):898–906. </div>
+</div>
+<div id="ref-helsel2010" class="csl-entry" role="listitem">
+<div class="csl-left-margin">121. </div><div class="csl-right-inline">Helsel D. <a href="https://doi.org/10.1093/annhyg/mep092">Much <span>Ado About Next</span> to <span>Nothing</span>: <span>Incorporating Nondetects</span> in <span>Science</span></a>. <em>The Annals of Occupational Hygiene</em>. 2010;54(3):257–262. </div>
+</div>
+<div id="ref-sherina2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">122. </div><div class="csl-right-inline">Sherina V, McMurray HR, Powers W, et al. <a href="https://doi.org/10.1186/s12859-020-03807-9">Multiple imputation and direct estimation for <span class="nocase">qPCR</span> data with non-detects</a>. <em>BMC Bioinformatics</em>. 2020;21(1):545. </div>
+</div>
+<div id="ref-cohen1963" class="csl-entry" role="listitem">
+<div class="csl-left-margin">123. </div><div class="csl-right-inline">Cohen AC. Progressively <span>Censored Samples</span> in <span>Life Testing</span>. <em>Technometrics</em> [electronic article]. 1963;5(3):327–339. (<a href="https://www.jstor.org/stable/1266337">https://www.jstor.org/stable/1266337</a>). (Accessed October 31, 2023)</div>
+</div>
+<div id="ref-eilers2012" class="csl-entry" role="listitem">
+<div class="csl-left-margin">124. </div><div class="csl-right-inline">Eilers PHC, Roder E, Savelkoul HFJ, et al. <a href="https://doi.org/10.1186/1471-2172-13-37">Quantile regression for the statistical analysis of immunological data with many non-detects</a>. <em>BMC Immunol.</em> 2012;13:37. </div>
+</div>
+<div id="ref-StanManual" class="csl-entry" role="listitem">
+<div class="csl-left-margin">125. </div><div class="csl-right-inline">Stan Development Team. Stan <span>Modeling Language Users</span>’ <span>Guide</span> and <span>Reference Manual</span>. 2.33 ed. 2023.</div>
+</div>
+<div id="ref-wijeysundera2012" class="csl-entry" role="listitem">
+<div class="csl-left-margin">126. </div><div class="csl-right-inline">Wijeysundera HC, Wang X, Tomlinson G, et al. <a href="https://doi.org/10.2147/CEOR.S31552">Techniques for estimating health care costs with censored data: An overview for the health services researcher</a>. <em>ClinicoEconomics and Outcomes Research: CEOR</em>. 2012;4:145. </div>
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
