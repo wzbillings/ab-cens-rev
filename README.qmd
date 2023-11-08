@@ -2,10 +2,6 @@
 format: gfm
 ---
 
----
-output: github_document
----
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
@@ -15,27 +11,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-# ab-cens-rev
+# Review of methods for analyzing censored antibody data
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of ab-cens-rev is to ...
-
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r cars}
-summary(cars)
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub.
+We will conduct a literature review to find literature on how censored
+immunological measurements have historically been treated by statisticians.
+We will identify practically useful models, and compare those with our
+preferred parametric modeling strategy.
 
 <!-- END OF FILE -->
